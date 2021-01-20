@@ -3,3 +3,18 @@
 .component {
   padding: $base-size;
 }
+.cellPosition {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.links {
+  text-align: center;
+  width: 100%;
+  margin: 2px;
+
+}
+.celCenter{
+    text-align: center;
+}
