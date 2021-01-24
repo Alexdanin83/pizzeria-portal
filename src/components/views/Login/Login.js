@@ -1,6 +1,6 @@
 import React from 'react';
 //import PropTypes from 'prop-types';
-import styles from './Login.module.scss';
+//import styles from './Login.module.scss';
 import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
@@ -43,7 +43,7 @@ const Login = () => {
         variant='contained'
         color='primary'
         href='/panel/panel/'
-        
+
       >
                  Sign In
       </Button>
