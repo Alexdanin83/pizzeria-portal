@@ -59,7 +59,7 @@ const renderActions = (status) => {
               variant='contained'
               color='primary'
               size="small"
-              exath to={`${process.env.PUBLIC_URL}/tables/booking/new`}>
+              to={`${process.env.PUBLIC_URL}/tables/booking/new`}>
             New Booking
             </Button>
           </div>
@@ -69,7 +69,6 @@ const renderActions = (status) => {
               variant='contained'
               color='secondary'
               size="small"
-              exath
               to={`${process.env.PUBLIC_URL}/tables/events/new`}>
             New Events
             </Button>
@@ -88,7 +87,7 @@ const renderActions = (status) => {
               variant='contained'
               size="small"
               color='primary'
-              exath to={`${process.env.PUBLIC_URL}/tables/booking/:id`}>
+              to={`${process.env.PUBLIC_URL}/tables/booking/:id`}>
             Booked
             </Button>
           </div>
@@ -106,7 +105,7 @@ const renderActions = (status) => {
               component={Link}
               variant='contained'
               size="small"
-              exath to={`${process.env.PUBLIC_URL}/tables/events/:id`}>
+              to={`${process.env.PUBLIC_URL}/tables/events/:id`}>
             Events
             </Button>
           </div>

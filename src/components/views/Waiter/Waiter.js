@@ -17,39 +17,55 @@ class Waiter extends React.Component {
       error: PropTypes.oneOfType([PropTypes.bool,PropTypes.string]),
     }),
     tables: PropTypes.any,
+    changedTableStatus: PropTypes.func,
   }
   componentDidMount(){
     const { fetchTables } = this.props;
     fetchTables();
   }
-  renderActions(status)  {
+
+  tableChangeStatus(row) {
+    const status = row.status;
+    switch (status) {
+      case 'free':  {row.status = 'thinking';  break;}
+      case 'thinking': {row.status = 'ordered';     break;}
+      case 'ordered': {row.status = 'prepared';break;}
+      case 'prepared': {row.status = 'delivered';break;}
+      case 'delivered': {row.status = 'paid';break;}
+      case 'paid': {row.status = 'free';break;}
+      default:  { row.status = 'free'; break;}
+    }
+    const { changedTableStatus } = this.props;
+    changedTableStatus(row);
+    console.log(row);
+  }
+
+  renderActions(row)  {
+    const status = row.status;
     switch (status) {
       case 'free':
         return (
-          <>
-            <Button>thinking</Button>
-            <Button>new order</Button>
-          </>
+          <Button onClick={() => {this.tableChangeStatus(row); }}> thinking </Button>
         );
       case 'thinking':
         return (
-          <Button>new order</Button>
+          <Button onClick={() => {this.tableChangeStatus(row); }}> New order </Button>
         );
       case 'ordered':
         return (
-          <Button>prepared</Button>
+          <Button onClick={() => {this.tableChangeStatus(row); }}> Prepared </Button>
         );
       case 'prepared':
         return (
-          <Button>delivered</Button>
+          <Button onClick={() => {this.tableChangeStatus(row); }}> Delivered </Button>
         );
       case 'delivered':
         return (
-          <Button>paid</Button>
+          <Button onClick={() => {this.tableChangeStatus(row); }}> Paid </Button>
         );
       case 'paid':
         return (
-          <Button>free</Button>
+          <Button onClick={() => {this.tableChangeStatus(row); }}> Free </Button>
         );
       default:
         return null;
@@ -94,14 +110,10 @@ class Waiter extends React.Component {
                     {row.status}
                   </TableCell>
                   <TableCell>
-                    {row.order && (
-                      <Button to={`${process.env.PUBLIC_URL}/waiter/order/${row.order}`}>
-                        {row.order}
-                      </Button>
-                    )}
+                    {row.order && (<Button to={`${process.env.PUBLIC_URL}/waiter/order/${row.order}`}>  {row.order} </Button> )}
                   </TableCell>
                   <TableCell>
-                    {this.renderActions(row.status)}
+                    {this.renderActions(row)}
                   </TableCell>
                 </TableRow>
               ))}

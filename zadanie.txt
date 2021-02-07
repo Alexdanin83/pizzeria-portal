@@ -1,0 +1,9 @@
+waiter->ordered
+
+kitchen-> powinna byæ mo¿liwoœæ clicniêcia prepared
+po klikniêciu prepared w kitchen status powinien sie zmieniæ w waiter na prepared
+
+
+order-> zamówienie per stolik
+
+ten order musi trFIÆ DO waiter
